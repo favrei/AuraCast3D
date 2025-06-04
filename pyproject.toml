@@ -1,0 +1,53 @@
+[project]
+name = "video_to_3d_converter"
+version = "0.1.0"
+description = "Real-time 2D Video to 3D Point-Cloud Converter"
+requires-python = ">=3.11"
+dependencies = [
+    "torch",
+    "torchvision",
+    "timm",
+    "numpy",
+    "opencv-python",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pip-audit",
+    "ruff",
+    "pytest",
+]
+
+[tool.uv]
+
+[tool.ruff]
+line-length = 100  # Consistent with many projects
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # Pyflakes
+    "I",  # isort
+    "UP", # pyupgrade
+    "S",  # flake8-bandit (security)
+    "B",  # flake8-bugbear
+    "A",  # flake8-builtins
+    "C4", # flake8-comprehensions
+    "T20", # flake8-print
+    "Q000", # flake8-quotes (enforce double quotes as per format)
+]
+ignore = [
+    "E501", # Line too long (handled by formatter)
+    "B008", # Function call argument repetition (can be noisy)
+    "S101", # Use of assert (acceptable in tests)
+]
+# Allow autofix for all enabled rules
+fixable = ["ALL"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "lf"
+docstring-code-format = true
